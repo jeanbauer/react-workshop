@@ -1,4 +1,5 @@
 import React from 'react'
+import { useFormField } from '../components/hooks/hooks'
 
 const getImageForHouse = (house) => {
     switch (house) {
@@ -34,12 +35,17 @@ const Character = ({ name, house = 'Hogwarts', bloodStatus }) => (
 )
 
 const Home = ({ wizards }) => {
+    const field = useFormField('texto aqui')
+
     if (!wizards.length) return <h1>Loading...</h1>
 
     return (
+      <>
+        <input className="w-screen border-solid border-4 border-gray-600" type="text" {...field} />
         <div className="flex flex-wrap">
             {wizards.map((char, index) => <Character key={index} {...char} />)}
         </div>
+      </>
     )
 }
 
