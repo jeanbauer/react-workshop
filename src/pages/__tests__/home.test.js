@@ -8,21 +8,21 @@ import { render } from 'react-testing-library';
 import Home from '../home'
 
 describe('Home', () => {
-    const characters = [{
+    const wizards = [{
         name: 'Erri Potter',
         house: 'Gryffindor',
         bloodStatus: 'dunno'
     }]
 
     it('shows image description', () => {
-        const { getByAltText } = render(<Home characters={characters} />)
+        const { getByAltText } = render(<Home wizards={wizards} />)
 
         expect(getByAltText('Logo of Gryffindor')).toBeInTheDocument()
     })
 
     it('shows house title', () => {
-        const { getByText } = render(<Home characters={characters} />)
+        const { getByText } = render(<Home wizards={wizards} />)
 
-        expect(getByText('Gryffindor')).toBeInTheDocument()
+        expect(getByText('House: Gryffindor')).toBeInTheDocument()
     })
 })
