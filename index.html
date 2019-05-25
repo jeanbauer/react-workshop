@@ -22,68 +22,13 @@
                ]
 
                // E AGORA? 🤔🤔🤔
-               aplicaDadosNoDOM2(dadosFakes)
+               aplicaDadosNoDOM(dadosFakes)
            }, 2000)
         }
 
-        // Utilizando innerHTML
-        function aplicaDadosNoDOM1(dados) {
-            let HTML = "<div>"
-            dados.forEach(({ nome, populacao}) => {
-                HTML += `<p>${nome} - ${populacao}</p>`
-            })
-            HTML += "</div>"
-
-            document.getElementById("conteudo").innerHTML = HTML
+        function aplicaDadosNoDOM(dados) {
+           // aqui vem o seu código
         }
-
-        // Utilizando API's de construção de elementos
-        function aplicaDadosNoDOM2(dados) {
-            // Cria um novo elemento div
-            var nossaDivDeConteudo = document.createElement("div");
-
-            dados.forEach(({ nome, populacao}) => {
-                var nossoParagrafo = document.createElement("p");
-                var conteudo = document.createTextNode(`${nome} - ${populacao}`)
-                nossoParagrafo.appendChild(conteudo); // adiciona o nó de texto ao paragrafo
-                nossaDivDeConteudo.appendChild(nossoParagrafo)
-            })
-
-            document.getElementById("conteudo").appendChild(nossaDivDeConteudo)
-        }
-
-
-        // OK, vamos facilitar nossa vida
-        const el = (tag = "div", attrs = {}, ...children) => {
-            for (const [attr, value] of Object.entries(attrs)) {
-                element.setAttribute(attr, value)
-            }
-
-            children.forEach(child => {
-                switch (typeof child) {
-                    case "string":
-                        element.appendChild(document.createTextNode(child))
-                        break
-                    default:
-                        element.appendChild(child)
-                        break
-                }
-            })
-
-            return element
-        }
-
-        const div = (attrs, ...children) => el("div", attrs, ...children)
-
-        function construindoDOM() {
-            return div({},
-                p({}, 'texto')
-            )
-        }
-
-        // Até chegar no JSX...
-        // React.createElement() sem jsx
-        // <div></div>
     </script>
 </body>
 </html>
